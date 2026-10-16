@@ -33,6 +33,8 @@ android {
 }
 
 dependencies {
+    implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.constraintlayout)
