@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88130341484",
+    "project_id": "xyronex-tech-hub-6ecb2",
+    "storage_bucket": "xyronex-tech-hub-6ecb2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88130341484:android:0f53d234b4b26e19e5a649",
+        "android_client_info": {
+          "package_name": "com.example.xyronextechhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr4VvWMLuDPps_jqHpR5l95UjUv3DSI00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
