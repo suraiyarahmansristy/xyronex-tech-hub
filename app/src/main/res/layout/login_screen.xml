@@ -104,6 +104,7 @@
             android:drawablePadding="14dp"
             android:hint="Password"
             android:inputType="textPassword"
+            app:passwordToggleEnabled="true"
             android:paddingHorizontal="16dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#A5B6CE"
