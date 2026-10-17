@@ -1,6 +1,10 @@
 package com.example.xyronextechhub
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
+import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,20 +16,46 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.login_screen)
 
-        // ফায়ারবেস অথেন্টিকেশন ইনিশিয়ালাইজ করা
         auth = FirebaseAuth.getInstance()
 
-        // ইমেইল, পাসওয়ার্ড এবং লগইন বাটন আইডি দিয়ে কানেক্ট করা
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
 
-        // লগইন বাটনে ক্লিক করলে যা হবে
+        var isPasswordVisible = false
+
+        etPassword.setOnTouchListener { _, event ->
+            val DRAWABLE_END = 2
+            if (event.action == MotionEvent.ACTION_UP) {
+                val drawableEnd = etPassword.compoundDrawablesRelative[DRAWABLE_END]
+                    ?: etPassword.compoundDrawables[DRAWABLE_END]
+
+                if (drawableEnd != null && event.rawX >= (etPassword.right - drawableEnd.bounds.width() - etPassword.paddingEnd)) {
+                    isPasswordVisible = !isPasswordVisible
+                    if (isPasswordVisible) {
+                        etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                            android.R.drawable.ic_lock_lock, 0, R.drawable.baseline_visibility_24, 0
+                        )
+                    } else {
+                        etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                        etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                            android.R.drawable.ic_lock_lock, 0, R.drawable.baseline_visibility_off_24, 0
+                        )
+                    }
+                    etPassword.setSelection(etPassword.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
+
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -35,12 +65,6 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show()
-
-                            // সফল হলে চাইলে MainActivity তে যাওয়ার কোড এখানে দিতে পারেন
-                            // val intent = Intent(this, MainActivity::class.java)
-                            // startActivity(intent)
-                            // finish()
-
                         } else {
                             Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
