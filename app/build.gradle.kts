@@ -44,8 +44,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
-    // Import the Firebase BoM (Bill of Materials)
-    implementation(platform("com.google.firebase:firebase-bom:35.0.1"))
+    //Import the Firebase BoM (Bill of Materials)
+    implementation(platform(notation = "com.google.firebase:firebase-bom:35.0.2"))
 
     // Firebase Analytics
     implementation("com.google.firebase:firebase-analytics")

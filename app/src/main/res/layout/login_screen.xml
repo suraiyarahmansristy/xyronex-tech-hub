@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#060A17"
     android:fillViewport="true"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -183,14 +183,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvOr" />
 
-        <!-- GitHub Login Button -->
+        <!-- Facebook Login Button -->
         <Button
-            android:id="@+id/btnGithub"
+            android:id="@+id/btnfacebook"
             android:layout_width="247dp"
             android:layout_height="61dp"
             android:layout_marginTop="12dp"
             android:backgroundTint="#0F172A"
-            android:drawableStart="@drawable/github_icon"
             android:drawablePadding="14dp"
             android:text="Continue with Facebook"
             android:textAllCaps="false"
@@ -213,7 +212,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnGithub">
+            app:layout_constraintTop_toBottomOf="@id/btnfacebook">
 
             <TextView
                 android:layout_width="wrap_content"
